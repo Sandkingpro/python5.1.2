@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if img_obj %}
+        <h3>Succesfully uploaded: {{img_obj.title}}</h3>
+        <img src="{{ img_obj.image.url }}" alt="connect" style="max-height:300px">
+        <p>Это цифра {{prediction}}?</p>
+        <form method="post" action="{% url 'process_image' %}">
+            {% csrf_token %}
+            <input type="hidden" name="img_path" value="{{ img_obj.image.path }}">
+            <button type="submit" name="action" value="correct">Верно</button>
+            <button type="submit" name="action" value="incorrect">Неверно</button>
+        </form>
+    {% endif %}
+</body>
+</html>
