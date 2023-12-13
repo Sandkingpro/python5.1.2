@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form method="post" action="{% url 'set_class' %}">
+        {% csrf_token %}
+        <input type="hidden" name="img_path" value="{{ img_path }}">
+        <p>Выберите правильную цифру:</p>
+        {% for digit in "0123456789" %}
+            <button type="submit" name="action" value="{{ digit }}">{{ digit }}</button>
+        {% endfor %}
+    </form>
+</body>
+</html>

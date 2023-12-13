@@ -16,3 +16,9 @@ def predict(img):
     prediction = model.predict(x)
     prediction = np.argmax(prediction)
     return prediction
+
+
+def to_array(img):
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img_data = img.reshape(-1)
+    return img_data

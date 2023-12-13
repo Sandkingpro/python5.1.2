@@ -18,6 +18,7 @@
         <form method="post" action="{% url 'process_image' %}">
             {% csrf_token %}
             <input type="hidden" name="img_path" value="{{ img_obj.image.path }}">
+            <input type="hidden" name="prediction" value="{{ prediction }}">
             <button type="submit" name="action" value="correct">Верно</button>
             <button type="submit" name="action" value="incorrect">Неверно</button>
         </form>

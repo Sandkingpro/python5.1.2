@@ -18,11 +18,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from app.views import image_upload_view,process_image
+from app.views import image_upload_view,process_image,set_class
 
 urlpatterns = [
     path('', image_upload_view, name='image_upload_view'),
-    path('process/', process_image, name='process_image')
+    path('process/', process_image, name='process_image'),
+    path('set_class/', set_class, name='set_class')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
